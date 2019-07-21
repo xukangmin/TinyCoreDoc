@@ -4,18 +4,15 @@ Support
 
 Source Code 
 -----------
-You can find the source
+You can find the source code here_. 
 
-The easiest way to get help with the project is to join the ``#crawler``
-channel on Freenode_. We hang out there and you can get real-time help with
-your projects.  The other good way is to open an issue on Github_.
+For issues, please submit issues.
 
-The mailing list at https://groups.google.com/forum/#!forum/crawler is also available for support.
+You are most welcomed to sumbit pull requests for contributions.
 
-.. _Freenode: irc://freenode.net
-.. _Github: http://github.com/example/crawler/issues
+.. _here: https://github.com/xukangmin/tinycore.git
 
 
 Feedback
 --------
-If you like
+If you have aditional feedback, please send email to xukangmin@gmail.com
