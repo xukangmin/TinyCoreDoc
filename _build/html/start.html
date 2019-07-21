@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Getting Started &#8212; TinyCoreDoc 0.0.1 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using TinyCore" href="usage.html" />
+    <link rel="prev" title="Welcome to TinyCore’s documentation!" href="index.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="usage.html" title="Using TinyCore"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to TinyCore’s documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">TinyCoreDoc 0.0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="board-intro">
+<h2>Board Intro<a class="headerlink" href="#board-intro" title="Permalink to this headline">¶</a></h2>
+<p>TinyCore Series include TinyCore 16 (Attiny1616 breakout board), TinyCore 32 (Attiny3217 breakout board) and TinyCore Programmer.
+TinyCore is miniature prototpying board with common peripherals like I2C, SPI, UART.
+It also has PWM, Timers, Touch PINS, ADC, DAC, 16K / 32K Flash, 2K SRAM, 256 bytes EEPROM with 8-bit CPU running up to 20MHz all in it’s tiny body!
+It has Arduino Support and open source libraries.
+They are maker &amp; hacker friendly.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Specifications</p></th>
+<th class="head"><p>.</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Flash (program memory)</p></td>
+<td><p>32/16 KB</p></td>
+</tr>
+<tr class="row-odd"><td><p>RAM</p></td>
+<td><p>2 KB</p></td>
+</tr>
+<tr class="row-even"><td><p>EEPROM</p></td>
+<td><p>256 bytes</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bootloader</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p>GPIO Pins</p></td>
+<td><p>18</p></td>
+</tr>
+<tr class="row-odd"><td><p>ADC Channels</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-even"><td><p>PWM Channels</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>Peripheral</p></td>
+<td><p>USART, SPI, I2C, Touch</p></td>
+</tr>
+<tr class="row-even"><td><p>Clock</p></td>
+<td><p>Up to 20 MHz</p></td>
+</tr>
+<tr class="row-odd"><td><p>Power Consumption</p></td>
+<td><p>min 2.9μA, max 10mA</p></td>
+</tr>
+</tbody>
+</table>
+<p>Below is the overview of the TinyCore 16 Breakout Board:</p>
+<a class="reference internal image-reference" href="_images/TinyCore16_Feature.svg"><img alt="_images/TinyCore16_Feature.svg" src="_images/TinyCore16_Feature.svg" width="100%" /></a>
+<div class="section" id="tinycore-16-pinout">
+<h3>TinyCore 16 Pinout<a class="headerlink" href="#tinycore-16-pinout" title="Permalink to this headline">¶</a></h3>
+<img alt="_images/TinyCore16_Pinout.png" src="_images/TinyCore16_Pinout.png" />
+</div>
+<div class="section" id="tinycore-32-pinout">
+<h3>TinyCore 32 Pinout<a class="headerlink" href="#tinycore-32-pinout" title="Permalink to this headline">¶</a></h3>
+<img alt="_images/TinyCore32_Pinout.png" src="_images/TinyCore32_Pinout.png" />
+</div>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<dl class="simple">
+<dt><strong>Hardware:</strong></dt><dd><ul class="simple">
+<li><p>Solder Header pins on both TinyCore 16/32 and TinyCore Programer.</p></li>
+<li><p>Plug in TinyCore 16 or 32</p></li>
+<li><p>Plug in Optional ESP8266 or W600 module</p></li>
+<li><p>Connect a USB-C cable and plug into your computer</p></li>
+</ul>
+</dd>
+</dl>
+<a class="reference internal image-reference" href="_images/assembled.jpg"><img alt="_images/assembled.jpg" class="align-center" src="_images/assembled.jpg" style="width: 60%;" /></a>
+<dl class="simple">
+<dt><strong>Software Through Arduino IDE:</strong></dt><dd><ul class="simple">
+<li><p>Install the current upstream Arduino IDE at the 1.8.7 level or later. The current version is at the <a class="reference external" href="http://www.arduino.cc/en/main/software">Arduino Website</a>.</p></li>
+<li><p>Start Arduino and open Preferences window.</p></li>
+<li><p>Enter <code class="docutils literal notranslate"><span class="pre">https://raw.githubusercontent.com/xukangmin/TinyCore/master/avr/package/package_tinycore_index.json</span></code>
+into <em>Additional Board Manager URLs</em> field. You can add multiple URLs, separating them with commas.</p></li>
+<li><p>Open Boards Manager from Tools &gt; Board menu and install <em>TinyCore</em> platform (and don’t forget to select your TinyCore board from Tools &gt; Board menu after installation).</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="blink">
+<h2>Blink!<a class="headerlink" href="#blink" title="Permalink to this headline">¶</a></h2>
+<p>A LED on the TinyCore Programmer board is connected to the DAC pin marked on the board silkscreen, copy below code to Arduino IDE and upload sketch:</p>
+<p><strong>Blink Code:</strong></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// initialize digital pin LED_BUILTIN as an output.</span>
+    <span class="n">pinMode</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// the loop function runs over and over again forever</span>
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>   <span class="c1">// turn the LED on (HIGH is the voltage level)</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>                       <span class="c1">// wait for a second</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>    <span class="c1">// turn the LED off by making the voltage LOW</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>                       <span class="c1">// wait for a second</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You should see an orange LED blinking on the TinyProgrammer Board.</p>
+<p><strong>Now You officially start your TinyCore Journal, Congratulations!</strong></p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Getting Started</a><ul>
+<li><a class="reference internal" href="#board-intro">Board Intro</a><ul>
+<li><a class="reference internal" href="#tinycore-16-pinout">TinyCore 16 Pinout</a></li>
+<li><a class="reference internal" href="#tinycore-32-pinout">TinyCore 32 Pinout</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#blink">Blink!</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to TinyCore’s documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="usage.html"
+                        title="next chapter">Using TinyCore</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/start.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="usage.html" title="Using TinyCore"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to TinyCore’s documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">TinyCoreDoc 0.0.1 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Kangmin.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>

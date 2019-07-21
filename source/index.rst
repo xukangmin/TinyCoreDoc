@@ -3,35 +3,19 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to TinyCoreDoc's documentation!
+Welcome to TinyCore's documentation!
 =======================================
 
-.. warning:: Here be dragons! This topic covers a number of options that
-   might alter your database.
-
-   Proceed with caution!
-
-
-
-This is the demo code::
-
-    import antigravity
-        def main():
-        
-        antigravity.fly()
-
+Contents:
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
-You can learn more about this in :rfc:`1984`.
-It is implemented in our code at :class:`System.Security`
-
-* This is a bulleted list.
-* It has two items, the second
-  item uses two lines.
-
+   start
+   usage
+   project
+   advance
+   support
 
 Indices and tables
 ==================
