@@ -165,24 +165,112 @@
 <h1>Using TinyCore<a class="headerlink" href="#using-tinycore" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="gpio">
 <h2>GPIO<a class="headerlink" href="#gpio" title="Permalink to this headline">¶</a></h2>
+<p>Follow the Arduino syntax, GPIO can be controlled as output or input.</p>
+<p>Configured as output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pinMode</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+<span class="n">digitalWrite</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>You can check the pinout for reference:</p>
+<blockquote>
+<div><img alt="_images/TinyCore16_Pinout.png" src="_images/TinyCore16_Pinout.png" />
+</div></blockquote>
+<p>The Arduino Pin is marked as purple. To use a specific pin, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">DAC_PIN</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">setup</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="n">pinMode</span><span class="p">(</span><span class="n">DAC_PIN</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">void</span> <span class="n">loop</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Reference: <a class="reference external" href="https://www.arduino.cc/en/Tutorial/DigitalPins">https://www.arduino.cc/en/Tutorial/DigitalPins</a></p>
 </div>
 <div class="section" id="pwm">
 <h2>PWM<a class="headerlink" href="#pwm" title="Permalink to this headline">¶</a></h2>
+<p>Same as Arduino, use analogWrite to generate PWM signals.</p>
+<p>Reference: <a class="reference external" href="https://www.arduino.cc/en/Tutorial/PWM">https://www.arduino.cc/en/Tutorial/PWM</a></p>
 </div>
 <div class="section" id="adc">
 <h2>ADC<a class="headerlink" href="#adc" title="Permalink to this headline">¶</a></h2>
+<p>There are 11 pins on TinyCore that support AnalogRead.</p>
+<p>Available pins are marked in green color from A0 to A11. Some of the pins are in the extended pin area.</p>
+<p>Use analogRead(A0) to read values from pins.</p>
+<p>Reference: <a class="reference external" href="https://www.arduino.cc/reference/en/language/functions/analog-io/analogread/">https://www.arduino.cc/reference/en/language/functions/analog-io/analogread/</a></p>
 </div>
 <div class="section" id="dac">
 <h2>DAC<a class="headerlink" href="#dac" title="Permalink to this headline">¶</a></h2>
+<p>TinyCore has 1 pin support real DAC output, which is pin 15.</p>
+<p>(To do: Internal DAC reference)</p>
 </div>
 <div class="section" id="servo">
 <h2>Servo<a class="headerlink" href="#servo" title="Permalink to this headline">¶</a></h2>
+<p>(To do)</p>
 </div>
 <div class="section" id="i2c">
 <h2>I2C<a class="headerlink" href="#i2c" title="Permalink to this headline">¶</a></h2>
+<p>Fully Implement Wire library. SCL/SDA pins are marked on the board which is pin 3 and pin 2.</p>
+<p>Simple Reader:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;Wire.h&gt;</span>
+
+<span class="n">void</span> <span class="n">setup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">Wire</span><span class="o">.</span><span class="n">begin</span><span class="p">();</span>        <span class="o">//</span> <span class="n">join</span> <span class="n">i2c</span> <span class="n">bus</span> <span class="p">(</span><span class="n">address</span> <span class="n">optional</span> <span class="k">for</span> <span class="n">master</span><span class="p">)</span>
+    <span class="n">Serial</span><span class="o">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>  <span class="o">//</span> <span class="n">start</span> <span class="n">serial</span> <span class="k">for</span> <span class="n">output</span>
+<span class="p">}</span>
+
+<span class="n">void</span> <span class="n">loop</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">Wire</span><span class="o">.</span><span class="n">requestFrom</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">);</span>    <span class="o">//</span> <span class="n">request</span> <span class="mi">6</span> <span class="nb">bytes</span> <span class="kn">from</span> <span class="nn">slave</span> <span class="n">device</span> <span class="c1">#8</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="n">Wire</span><span class="o">.</span><span class="n">available</span><span class="p">())</span> <span class="p">{</span> <span class="o">//</span> <span class="n">slave</span> <span class="n">may</span> <span class="n">send</span> <span class="n">less</span> <span class="n">than</span> <span class="n">requested</span>
+        <span class="n">char</span> <span class="n">c</span> <span class="o">=</span> <span class="n">Wire</span><span class="o">.</span><span class="n">read</span><span class="p">();</span> <span class="o">//</span> <span class="n">receive</span> <span class="n">a</span> <span class="n">byte</span> <span class="k">as</span> <span class="n">character</span>
+        <span class="n">Serial</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">c</span><span class="p">);</span>         <span class="o">//</span> <span class="nb">print</span> <span class="n">the</span> <span class="n">character</span>
+    <span class="p">}</span>
+
+    <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Simple Writer:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;Wire.h&gt;</span>
+
+<span class="n">void</span> <span class="n">setup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">Wire</span><span class="o">.</span><span class="n">begin</span><span class="p">();</span> <span class="o">//</span> <span class="n">join</span> <span class="n">i2c</span> <span class="n">bus</span> <span class="p">(</span><span class="n">address</span> <span class="n">optional</span> <span class="k">for</span> <span class="n">master</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="n">byte</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">loop</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">Wire</span><span class="o">.</span><span class="n">beginTransmission</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span> <span class="o">//</span> <span class="n">transmit</span> <span class="n">to</span> <span class="n">device</span> <span class="c1">#8</span>
+    <span class="n">Wire</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;x is &quot;</span><span class="p">);</span>        <span class="o">//</span> <span class="n">sends</span> <span class="n">five</span> <span class="nb">bytes</span>
+    <span class="n">Wire</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">x</span><span class="p">);</span>              <span class="o">//</span> <span class="n">sends</span> <span class="n">one</span> <span class="n">byte</span>
+    <span class="n">Wire</span><span class="o">.</span><span class="n">endTransmission</span><span class="p">();</span>    <span class="o">//</span> <span class="n">stop</span> <span class="n">transmitting</span>
+
+    <span class="n">x</span><span class="o">++</span><span class="p">;</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>receiveEvent and requestEvent are also supported.</p>
 </div>
 <div class="section" id="uart">
 <h2>UART<a class="headerlink" href="#uart" title="Permalink to this headline">¶</a></h2>
+<p>uart support up to 115200 baud rate.</p>
+<p>To use uart, simply initialize it as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Serial</span><span class="o">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Then you can send or receive data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Serial</span><span class="o">.</span><span class="n">println</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="p">);</span>
+<span class="n">Serial</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="mh">0x0d</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="spi">
 <h2>SPI<a class="headerlink" href="#spi" title="Permalink to this headline">¶</a></h2>
