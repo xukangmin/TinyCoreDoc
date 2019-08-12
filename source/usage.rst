@@ -18,17 +18,16 @@ You can check the pinout for reference:
 
 The Arduino Pin is marked as purple. To use a specific pin, for example::
 
-    const DAC_PIN = 15;
     
     void setup()
     {
-        pinMode(DAC_PIN, OUTPUT);
+        pinMode(LED_BUILTIN , OUTPUT);
     }
     
     void loop() {
-        digitalWrite(pin, HIGH);
+        digitalWrite(LED_BUILTIN , HIGH);
         delay(1000);
-        digitalWrite(pin, LOW);
+        digitalWrite(LED_BUILTIN , LOW);
         delay(1000);
     }
     

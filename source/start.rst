@@ -7,7 +7,7 @@ Board Intro
 
 TinyCore Series include TinyCore 16 (Attiny1616 breakout board), TinyCore 32 (Attiny3217 breakout board) and TinyCore Programmer.
 TinyCore is miniature prototpying board with common peripherals like I2C, SPI, UART.
-It also has PWM, Timers, Touch PINS, ADC, DAC, 16K / 32K Flash, 2K SRAM, 256 bytes EEPROM with 8-bit CPU running up to 20MHz all in it’s tiny body! 
+It also has PWM, Timers, Touch PINS, ADC, DAC, 16K / 32K Flash, 2K SRAM, 256 bytes EEPROM with 8-bit CPU running up to 20MHz all in its tiny body! 
 It has Arduino Support and open source libraries.
 They are maker & hacker friendly.
 
