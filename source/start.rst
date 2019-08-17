@@ -85,15 +85,26 @@ A LED on the TinyCore Programmer board is connected to the DAC pin marked on the
         delay(1000);                       // wait for a second
     }
 
-Compile
+Compile & Upload
 --------
 
-(To Do)
+Select Board TinyCore 16 or TinyCore 32 in the board manager and click and compile the code.
 
-Upload
--------
+There are several ways to upload sketches.
+    * Upload through TinyCore Programmer
+        * Select related com port number and click upload directly, same as programming Arduino Uno
+    * Upload through Arduino Uno or similar boards.
+        * Connect Arduno Uno and Tiny Core boards as described `here`_.
+        * Arduin IDE->Tools->Programmer->Arduino PIN as UPDI
+        * Arduin IDE->Sketch->Upload using programer
+    * Upload through `Atmel-ICE Programmer`_
+        * Connect Atmel-ICE UPDI, VTG and GND PIN to TinyCore, supply TinyCore with external voltage, either 3.3V or 5V.
+        * Make sure the green light on Atmel-ICE is on, that means target is properly powered
+        * Arduin IDE->Tools->Programer->Atmel-ICE-UPDI
+        * Arduin IDE->Sketch->Upload using programer
 
-(To Do)
+.. _`Atmel-ICE Programmer`: https://www.microchip.com/DevelopmentTools/ProductDetails/ATATMEL-ICE
+.. _`here`: https://github.com/ElTangas/jtag2updi
 
 
 You should see an orange LED blinking on the TinyProgrammer Board. 

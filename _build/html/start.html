@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Getting Started &mdash; TinyCoreDoc 0.0.1 documentation</title>
+  <title>Getting Started &mdash; TinyCoreDoc 0.0.3 documentation</title>
   
 
   
@@ -89,6 +89,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#blink">Blink!</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compile-upload">Compile &amp; Upload</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="usage.html">Using TinyCore</a></li>
@@ -165,7 +166,7 @@
 <h2>Board Intro<a class="headerlink" href="#board-intro" title="Permalink to this headline">¶</a></h2>
 <p>TinyCore Series include TinyCore 16 (Attiny1616 breakout board), TinyCore 32 (Attiny3217 breakout board) and TinyCore Programmer.
 TinyCore is miniature prototpying board with common peripherals like I2C, SPI, UART.
-It also has PWM, Timers, Touch PINS, ADC, DAC, 16K / 32K Flash, 2K SRAM, 256 bytes EEPROM with 8-bit CPU running up to 20MHz all in it’s tiny body!
+It also has PWM, Timers, Touch PINS, ADC, DAC, 16K / 32K Flash, 2K SRAM, 256 bytes EEPROM with 8-bit CPU running up to 20MHz all in its tiny body!
 It has Arduino Support and open source libraries.
 They are maker &amp; hacker friendly.</p>
 <table class="docutils align-default">
@@ -263,6 +264,41 @@ into <em>Additional Board Manager URLs</em> field. You can add multiple URLs, se
 <span class="p">}</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="compile-upload">
+<h2>Compile &amp; Upload<a class="headerlink" href="#compile-upload" title="Permalink to this headline">¶</a></h2>
+<p>Select Board TinyCore 16 or TinyCore 32 in the board manager and click and compile the code.</p>
+<dl class="simple">
+<dt>There are several ways to upload sketches.</dt><dd><ul class="simple">
+<li><dl class="simple">
+<dt>Upload through TinyCore Programmer</dt><dd><ul>
+<li><p>Select related com port number and click upload directly, same as programming Arduino Uno</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Upload through Arduino Uno or similar boards.</dt><dd><ul>
+<li><p>Connect Arduno Uno and Tiny Core boards as described <a class="reference external" href="https://github.com/ElTangas/jtag2updi">here</a>.</p></li>
+<li><p>Arduin IDE-&gt;Tools-&gt;Programmer-&gt;Arduino PIN as UPDI</p></li>
+<li><p>Arduin IDE-&gt;Sketch-&gt;Upload using programer</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Upload through <a class="reference external" href="https://www.microchip.com/DevelopmentTools/ProductDetails/ATATMEL-ICE">Atmel-ICE Programmer</a></dt><dd><ul>
+<li><p>Connect Atmel-ICE UPDI, VTG and GND PIN to TinyCore, supply TinyCore with external voltage, either 3.3V or 5V.</p></li>
+<li><p>Make sure the green light on Atmel-ICE is on, that means target is properly powered</p></li>
+<li><p>Arduin IDE-&gt;Tools-&gt;Programer-&gt;Atmel-ICE-UPDI</p></li>
+<li><p>Arduin IDE-&gt;Sketch-&gt;Upload using programer</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
 <p>You should see an orange LED blinking on the TinyProgrammer Board.</p>
 <p><strong>Now You officially start your TinyCore Journal, Congratulations!</strong></p>
 </div>

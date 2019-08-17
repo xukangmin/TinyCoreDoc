@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Using TinyCore &mdash; TinyCoreDoc 0.0.1 documentation</title>
+  <title>Using TinyCore &mdash; TinyCoreDoc 0.0.3 documentation</title>
   
 
   
@@ -176,17 +176,15 @@
 <div><img alt="_images/TinyCore16_Pinout.png" src="_images/TinyCore16_Pinout.png" />
 </div></blockquote>
 <p>The Arduino Pin is marked as purple. To use a specific pin, for example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">DAC_PIN</span> <span class="o">=</span> <span class="mi">15</span><span class="p">;</span>
-
-<span class="n">void</span> <span class="n">setup</span><span class="p">()</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">setup</span><span class="p">()</span>
 <span class="p">{</span>
-    <span class="n">pinMode</span><span class="p">(</span><span class="n">DAC_PIN</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+    <span class="n">pinMode</span><span class="p">(</span><span class="n">LED_BUILTIN</span> <span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
 <span class="p">}</span>
 
 <span class="n">void</span> <span class="n">loop</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span> <span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
     <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
-    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">pin</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span> <span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
     <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
@@ -196,6 +194,21 @@
 <div class="section" id="pwm">
 <h2>PWM<a class="headerlink" href="#pwm" title="Permalink to this headline">¶</a></h2>
 <p>Same as Arduino, use analogWrite to generate PWM signals.</p>
+<p>DAC PIN (or PIN 15) on TinyCore16/32 boards are true voltage output instead of PWM signals.</p>
+<p>Simply use analogWrite on the DAC pin.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">val</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span> <span class="o">//</span> <span class="p">(</span><span class="mi">0</span> <span class="n">to</span> <span class="mi">255</span><span class="p">)</span>
+<span class="n">analogWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>See DAC result below.</p>
+<a class="reference internal image-reference" href="_images/dac.png"><img alt="_images/dac.png" src="_images/dac.png" style="width: 100%;" /></a>
+<p>PWM pins includes PIN 1, 2, 3, 12, 13, 14, use analogWrite on these pins to generate PWM signals:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span> <span class="n">val</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="n">analogWrite</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>See PWM result below.</p>
+<a class="reference internal image-reference" href="_images/pwm_signals.png"><img alt="_images/pwm_signals.png" src="_images/pwm_signals.png" style="width: 100%;" /></a>
 <p>Reference: <a class="reference external" href="https://www.arduino.cc/en/Tutorial/PWM">https://www.arduino.cc/en/Tutorial/PWM</a></p>
 </div>
 <div class="section" id="adc">
@@ -208,11 +221,29 @@
 <div class="section" id="dac">
 <h2>DAC<a class="headerlink" href="#dac" title="Permalink to this headline">¶</a></h2>
 <p>TinyCore has 1 pin support real DAC output, which is pin 15.</p>
-<p>(To do: Internal DAC reference)</p>
+<p>The default DAC reference voltage is set as 2.5V.</p>
+<p>You can change reference voltage in the board.txt file.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Find -DDACVREF</p></li>
+<li><dl class="simple">
+<dt>Use the lookup table below</dt><dd><ul>
+<li><p>0.55V -DDACVREF=0</p></li>
+<li><p>1.1V  -DDACVREF=1</p></li>
+<li><p>1.5V  -DDACVREF=4</p></li>
+<li><p>2.5V  -DDACVREF=2</p></li>
+<li><p>4.3V  -DDACVREF=3</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<p>Note: when power supply voltage is 3.3V, 4.3V reference is not working properly, you need to supply 5V to use 4.3V.</p>
 </div>
 <div class="section" id="servo">
 <h2>Servo<a class="headerlink" href="#servo" title="Permalink to this headline">¶</a></h2>
-<p>(To do)</p>
+<p>Use Servo library like in Arduino. Servo should be available on all PWM pins (1,2,3,12,13,14).</p>
 </div>
 <div class="section" id="i2c">
 <h2>I2C<a class="headerlink" href="#i2c" title="Permalink to this headline">¶</a></h2>
@@ -274,9 +305,38 @@
 </div>
 <div class="section" id="spi">
 <h2>SPI<a class="headerlink" href="#spi" title="Permalink to this headline">¶</a></h2>
+<p>Same as Arduino:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;SPI.h&gt;</span>
+
+<span class="n">byte</span> <span class="n">address</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="n">byte</span> <span class="n">value</span> <span class="o">=</span> <span class="mh">0x55</span><span class="p">;</span>
+
+<span class="n">void</span> <span class="n">setup</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">SPI</span><span class="o">.</span><span class="n">begin</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="n">void</span> <span class="n">loop</span><span class="p">()</span> <span class="p">{</span>
+    <span class="n">SPI</span><span class="o">.</span><span class="n">transfer</span><span class="p">(</span><span class="n">address</span><span class="p">);</span>
+    <span class="n">SPI</span><span class="o">.</span><span class="n">transfer</span><span class="p">(</span><span class="n">value</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Reference: <a class="reference external" href="https://www.arduino.cc/en/reference/SPI">https://www.arduino.cc/en/reference/SPI</a></p>
 </div>
 <div class="section" id="eeprom">
 <h2>EEPROM<a class="headerlink" href="#eeprom" title="Permalink to this headline">¶</a></h2>
+<p>There are total 256 bytes eeprom on TinyCore 16/32 boards.</p>
+<p>Usages are the same as Arduino:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#include &lt;EEPROM.h&gt;</span>
+
+<span class="nb">int</span> <span class="n">val</span> <span class="o">=</span> <span class="n">EEPROM</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">addr</span><span class="p">);</span>
+
+<span class="n">EEPROM</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">addr</span><span class="p">,</span> <span class="n">val</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Check example code for more details.</p>
+<p>Reference: <a class="reference external" href="https://www.arduino.cc/en/Reference/EEPROM">https://www.arduino.cc/en/Reference/EEPROM</a></p>
+<p>Now let’s use these to build awesome tiny projects!</p>
 </div>
 </div>
 

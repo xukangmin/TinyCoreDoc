@@ -7,7 +7,7 @@ Board Intro
 
 TinyCore Series include TinyCore 16 (Attiny1616 breakout board), TinyCore 32 (Attiny3217 breakout board) and TinyCore Programmer.
 TinyCore is miniature prototpying board with common peripherals like I2C, SPI, UART.
-It also has PWM, Timers, Touch PINS, ADC, DAC, 16K / 32K Flash, 2K SRAM, 256 bytes EEPROM with 8-bit CPU running up to 20MHz all in it’s tiny body! 
+It also has PWM, Timers, Touch PINS, ADC, DAC, 16K / 32K Flash, 2K SRAM, 256 bytes EEPROM with 8-bit CPU running up to 20MHz all in its tiny body! 
 It has Arduino Support and open source libraries.
 They are maker & hacker friendly.
 
@@ -84,6 +84,28 @@ A LED on the TinyCore Programmer board is connected to the DAC pin marked on the
         digitalWrite(LED_BUILTIN, LOW);    // turn the LED off by making the voltage LOW
         delay(1000);                       // wait for a second
     }
+
+Compile & Upload
+--------
+
+Select Board TinyCore 16 or TinyCore 32 in the board manager and click and compile the code.
+
+There are several ways to upload sketches.
+    * Upload through TinyCore Programmer
+        * Select related com port number and click upload directly, same as programming Arduino Uno
+    * Upload through Arduino Uno or similar boards.
+        * Connect Arduno Uno and Tiny Core boards as described `here`_.
+        * Arduin IDE->Tools->Programmer->Arduino PIN as UPDI
+        * Arduin IDE->Sketch->Upload using programer
+    * Upload through `Atmel-ICE Programmer`_
+        * Connect Atmel-ICE UPDI, VTG and GND PIN to TinyCore, supply TinyCore with external voltage, either 3.3V or 5V.
+        * Make sure the green light on Atmel-ICE is on, that means target is properly powered
+        * Arduin IDE->Tools->Programer->Atmel-ICE-UPDI
+        * Arduin IDE->Sketch->Upload using programer
+
+.. _`Atmel-ICE Programmer`: https://www.microchip.com/DevelopmentTools/ProductDetails/ATATMEL-ICE
+.. _`here`: https://github.com/ElTangas/jtag2updi
+
 
 You should see an orange LED blinking on the TinyProgrammer Board. 
 
