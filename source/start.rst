@@ -85,6 +85,17 @@ A LED on the TinyCore Programmer board is connected to the DAC pin marked on the
         delay(1000);                       // wait for a second
     }
 
+Compile
+--------
+
+(To Do)
+
+Upload
+-------
+
+(To Do)
+
+
 You should see an orange LED blinking on the TinyProgrammer Board. 
 
 **Now You officially start your TinyCore Journal, Congratulations!**
