@@ -37,6 +37,28 @@ PWM
 ---
 Same as Arduino, use analogWrite to generate PWM signals.
 
+DAC PIN (or PIN 15) on TinyCore16/32 boards are true voltage output instead of PWM signals.
+
+Simply use analogWrite on the DAC pin.::
+
+    int val = 100; // (0 to 255)
+    analogWrite(LED_BUILTIN, val);
+
+See DAC result below.
+
+.. image:: _static/dac.png
+    :width: 100%
+
+PWM pins includes PIN 1, 2, 3, 12, 13, 14, use analogWrite on these pins to generate PWM signals::
+
+    int val = 100;
+    analogWrite(1, val);
+
+See PWM result below.
+
+.. image:: _static/pwm_signals.png
+    :width: 100%
+
 Reference: https://www.arduino.cc/en/Tutorial/PWM
 
 ADC
@@ -53,11 +75,23 @@ DAC
 ---
 TinyCore has 1 pin support real DAC output, which is pin 15.
 
-(To do: Internal DAC reference)
+The default DAC reference voltage is set as 2.5V.
+
+You can change reference voltage in the board.txt file. 
+
+    * Find -DDACVREF
+    * Use the lookup table below
+        0.55V -DDACVREF=0
+        1.1V  -DDACVREF=1
+        1.5V  -DDACVREF=4
+        2.5V  -DDACVREF=2
+        4.3V  -DDACVREF=3
+
+Note: when power supply voltage is 3.3V, 4.3V reference is not working properly, you need to supply 5V to use 4.3V.
 
 Servo
 -----
-(To do)
+Use Servo library like in Arduino. Servo should be available on all PWM pins (1,2,3,12,13,14).
 
 I2C
 ---
@@ -123,6 +157,7 @@ Then you can send or receive data::
 
 SPI
 ---
+
 
 EEPROM
 ------
