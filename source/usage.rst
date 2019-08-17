@@ -81,11 +81,11 @@ You can change reference voltage in the board.txt file.
 
     * Find -DDACVREF
     * Use the lookup table below
-        0.55V -DDACVREF=0
-        1.1V  -DDACVREF=1
-        1.5V  -DDACVREF=4
-        2.5V  -DDACVREF=2
-        4.3V  -DDACVREF=3
+        * 0.55V -DDACVREF=0
+        * 1.1V  -DDACVREF=1
+        * 1.5V  -DDACVREF=4
+        * 2.5V  -DDACVREF=2
+        * 4.3V  -DDACVREF=3
 
 Note: when power supply voltage is 3.3V, 4.3V reference is not working properly, you need to supply 5V to use 4.3V.
 
@@ -157,9 +157,39 @@ Then you can send or receive data::
 
 SPI
 ---
+Same as Arduino::
 
+    #include <SPI.h>
+
+    byte address = 0;
+    byte value = 0x55;
+
+    void setup() {
+        SPI.begin();
+    }
+
+    void loop() {
+        SPI.transfer(address);
+        SPI.transfer(value);
+    }
+
+Reference: https://www.arduino.cc/en/reference/SPI
 
 EEPROM
 ------
 
+There are total 256 bytes eeprom on TinyCore 16/32 boards.
 
+Usages are the same as Arduino::
+
+    #include <EEPROM.h>
+
+    int val = EEPROM.read(addr);
+
+    EEPROM.write(addr, val);
+
+Check example code for more details.
+
+Reference: https://www.arduino.cc/en/Reference/EEPROM
+
+Now let's use these to build awesome tiny projects!
