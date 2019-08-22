@@ -95,7 +95,26 @@ Use Servo library like in Arduino. Servo should be available on all PWM pins (1,
 
 I2C
 ---
-Fully Implement Wire library. SCL/SDA pins are marked on the board which is pin 3 and pin 2.
+Fully Implement Wire library. SCL/SDA pins are marked on the board which is pin 3 and pin 2. It is also possible to use alternative pins. (10/PA1 = SDA, 11/PA2 = SCL)
+
+To enable alternative pins, simply put the following code at the beginning of setup before Wire.begin()::
+
+    #include <Wire.h>
+
+    void setup() {
+        Wire.useAlternatePins();
+        Wire.begin();
+    }
+
+Another option is changing the pins_arduino.h file located in the variants folder, change::
+
+    #define TWI_MUX 		(PORTMUX_TWI0_DEFAULT_gc)
+
+To::
+
+    #define TWI_MUX 		(PORTMUX_TWI0_ALTERNATE_gc)
+
+This option is only for advanced user or if you want to make your customized board based on Attiny1616/3217.
 
 Simple Reader::
 
