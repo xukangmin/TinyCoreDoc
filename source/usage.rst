@@ -14,7 +14,7 @@ Configured as output::
 
 You can check the pinout for reference:
 
-    .. image:: _static/TinyCore16_Pinout.png
+    .. image:: _static/TinyCore16_pinout_V1.svg
 
 The Arduino Pin is marked as purple. To use a specific pin, for example::
 
