@@ -212,3 +212,32 @@ Check example code for more details.
 Reference: https://www.arduino.cc/en/Reference/EEPROM
 
 Now let's use these to build awesome tiny projects!
+
+Touch
+------
+
+TinyCore 16 has 12 pins available for touch configuration, TinyCore 32 has 15 pins available for touch configuration.
+
+To use touch pins, includes TinyTouch.h and follow the example code below::
+
+    #include "TinyTouch.h"
+
+    TinyTouch touch;
+
+    uint8_t touchPins[2] = {13, 2}; //initialize touch pins
+
+    void setup() {
+        touch.begin(touchPins, sizeof(touchPins));
+        
+        pinMode(LED_BUILTIN, OUTPUT);
+    }
+
+    void loop() {
+        test.touchHandle();
+
+        if (test.getValue(0) > 800 or test.getValue(1) > 800) {
+            digitalWrite(LED_BUILTIN, HIGH);
+        } else {
+            digitalWrite(LED_BUILTIN, LOW);
+        }
+    }
