@@ -315,6 +315,114 @@ You need to first install Adafruit NeoPixel Library.
     <iframe width="100%" height="350" src="https://www.youtube.com/embed/jilxpWxtArI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
+
+Touch With NeoPixel
+--------------------
+
+.. code-block:: c
+
+    // NeoPixel Ring simple sketch (c) 2013 Shae Erisson
+    // released under the GPLv3 license to match the rest of the AdaFruit NeoPixel library
+    #include "TinyTouch.h"
+    #include <Adafruit_NeoPixel.h>
+    #ifdef __AVR__
+    #include <avr/power.h>
+    #endif
+
+    #define TOUCH_TRIGGER_VALUE 800
+
+    TinyTouch touch;
+
+    uint8_t touchPins[2] = {13, 2}; //initialize touch pins
+
+    // Which pin on the Arduino is connected to the NeoPixels?
+    // On a Trinket or Gemma we suggest changing this to 1
+    #define PIN            12
+
+    // How many NeoPixels are attached to the Arduino?
+    #define NUMPIXELS      30
+
+    // When we setup the NeoPixel library, we tell it how many pixels, and which pin to use to send signals.
+    // Note that for older NeoPixel strips you might need to change the third parameter--see the strandtest
+    // example for more information on possible values.
+    Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+
+    int delayval = 20; // delay for 20 ms
+
+    int rainBowLoop = 0;
+
+    void setup() {
+
+        touch.begin(touchPins, sizeof(touchPins));
+        // This is for Trinket 5V 16MHz, you can remove these three lines if you are not using a Trinket
+        #if defined (__AVR_ATtiny85__)
+        if (F_CPU == 16000000) clock_prescale_set(clock_div_1);
+        #endif
+        // End of trinket special code
+
+        pixels.begin(); // This initializes the NeoPixel library.
+    }
+
+    void loop() {
+
+        // For a set of NeoPixels the first NeoPixel is 0, second is 1, all the way up to the count of pixels minus one.
+        touch.touchHandle();
+
+        if (touch.getValue(0) > TOUCH_TRIGGER_VALUE && touch.getValue(1) > TOUCH_TRIGGER_VALUE)
+        {
+            for(int i=0;i<NUMPIXELS;i++){
+                pixels.setPixelColor(i, pixels.Color(0,150,0));
+                pixels.show();
+            }
+        } 
+        else if (touch.getValue(0) > TOUCH_TRIGGER_VALUE && touch.getValue(1) < TOUCH_TRIGGER_VALUE) {
+            for(int i=0;i<NUMPIXELS;i++){
+                pixels.setPixelColor(i, pixels.Color(255,0,0));
+                pixels.show();
+            }
+        }
+        else if (touch.getValue(0) < TOUCH_TRIGGER_VALUE && touch.getValue(1) > TOUCH_TRIGGER_VALUE) {
+            for(int i=0;i<NUMPIXELS;i++){
+                pixels.setPixelColor(i, pixels.Color(255,255,255));
+                pixels.show();
+            }
+        }
+        else {
+            rainBowLoop++;
+
+            if (rainBowLoop >= 255) {
+            rainBowLoop = 0;
+            }
+
+            for(int i=0; i<pixels.numPixels(); i++) {
+            pixels.setPixelColor(i, Wheel((i+rainBowLoop) & 255));
+            }
+            pixels.show();
+            delay(delayval);
+        }
+    }
+
+        // Input a value 0 to 255 to get a color value.
+        // The colours are a transition r - g - b - back to r.
+    uint32_t Wheel(byte WheelPos) {
+        WheelPos = 255 - WheelPos;
+        if(WheelPos < 85) {
+            return pixels.Color(255 - WheelPos * 3, 0, WheelPos * 3);
+        }
+        if(WheelPos < 170) {
+            WheelPos -= 85;
+            return pixels.Color(0, WheelPos * 3, 255 - WheelPos * 3);
+        }
+        WheelPos -= 170;
+        return pixels.Color(WheelPos * 3, 255 - WheelPos * 3, 0);
+    }
+
+.. raw:: html
+
+    <div style="text-align: center; margin-bottom: 2em;">
+    <iframe width="100%" height="350" src="https://www.youtube.com/embed/P9d-Ejuq_uY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    
     
 Servo Control
 -----------------
