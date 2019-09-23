@@ -51,6 +51,10 @@ Installation
     :width: 60%
     :align: center
 
+**Driver:**
+    * Windows 10/Linux/Mac doesn't need a driver for TinyCore Programmer
+    * For Windows 7 or lower, please try to download this file to install driver properly. :download:`Windows Driver <_static/TinyProgrammer.inf>`
+    
 **Software Through Arduino IDE:**
     * Install the current upstream Arduino IDE at the 1.8.7 level or later. The current version is at the `Arduino Website`_.
     * Start Arduino and open Preferences window.
