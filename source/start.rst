@@ -98,7 +98,7 @@ There are several ways to upload sketches.
     * Upload through TinyCore Programmer
         * Select related com port number and click upload directly, same as programming Arduino Uno
     * Upload through Arduino Uno or similar boards.
-        * Connect Arduno Uno and Tiny Core boards as described `here`_.
+        * Connect Arduno Uno and Tiny Core boards as described `here`_ AND follow the instructions for "Building with Arduino IDE." 
         * Arduin IDE->Tools->Programmer->Arduino PIN as UPDI
         * Arduin IDE->Sketch->Upload using programer
     * Upload through `Atmel-ICE Programmer`_
