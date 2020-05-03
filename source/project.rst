@@ -47,9 +47,10 @@ Controlling NeoPixel String
 You need to first install `Adafruit NeoPixel Library`_.
 
 Adafruit NeoPixel only supports up to 19MHz, but TinyCore uses 20MHz by default, so you can change this file in Adafruit NeoPixel Library. 
-(C:\Users\(username)\Documents\Arduino\libraries\Adafruit_NeoPixel\Adafruit_NeoPixel.cpp)
+(C:\\Users\\(username)\\Documents\\Arduino\\libraries\\Adafruit_NeoPixel\\Adafruit_NeoPixel.cpp)
 
 From 
+
 .. code-block:: c
 
     // 16 MHz(ish) AVR --------------------------------------------------------
@@ -67,6 +68,7 @@ To
 .. _`Adafruit NeoPixel Library`: https://learn.adafruit.com/adafruit-neopixel-uberguide/arduino-library-installation
 
 
+Below is some sample code for using Neopixel library.
 
 .. code-block:: c
 
