@@ -44,7 +44,29 @@ Here we use DAC pin to output various voltages.
 Controlling NeoPixel String
 ---------------------------
 
-You need to first install Adafruit NeoPixel Library.
+You need to first install `Adafruit NeoPixel Library`_.
+
+Adafruit NeoPixel only supports up to 19MHz, but TinyCore uses 20MHz by default, so you can change this file in Adafruit NeoPixel Library. 
+(C:\Users\(username)\Documents\Arduino\libraries\Adafruit_NeoPixel\Adafruit_NeoPixel.cpp)
+
+From 
+.. code-block:: c
+
+    // 16 MHz(ish) AVR --------------------------------------------------------
+    #elif (F_CPU >= 15400000UL) && (F_CPU <= 19000000L)
+
+To
+
+.. code-block:: c
+
+    // 16 MHz(ish) AVR --------------------------------------------------------
+    #elif (F_CPU >= 15400000UL) && (F_CPU <= 20000000L)
+
+
+
+.. _`Adafruit NeoPixel Library`: https://learn.adafruit.com/adafruit-neopixel-uberguide/arduino-library-installation
+
+
 
 .. code-block:: c
 
