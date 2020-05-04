@@ -233,9 +233,9 @@ To use touch pins, includes TinyTouch.h and follow the example code below::
     }
 
     void loop() {
-        test.touchHandle();
+        touch.touchHandle();
 
-        if (test.getValue(0) > 800 or test.getValue(1) > 800) {
+        if (touch.getValue(0) > 800 || touch.getValue(1) > 800) {
             digitalWrite(LED_BUILTIN, HIGH);
         } else {
             digitalWrite(LED_BUILTIN, LOW);
