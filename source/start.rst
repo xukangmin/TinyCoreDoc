@@ -33,11 +33,11 @@ Below is the overview of the TinyCore 16 Breakout Board:
 
 TinyCore 16 Pinout
 ``````````````````
-.. image:: _static/TinyCore16_pinout_V1.svg
+.. image:: _static/TinyCore16_pinout_V2.svg
 
 TinyCore 32 Pinout
 ``````````````````
-.. image:: _static/TinyCore32_pinout_V1.svg
+.. image:: _static/TinyCore32_pinout_V2.svg
 
 Installation
 ------------
